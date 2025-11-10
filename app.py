@@ -30,7 +30,13 @@ context_instruction = st.text_input(
 # CONFIGURE GEMINI SDK
 # -----------------------------
 # NOTE: Replace with your actual API key
-genai.configure(api_key="AIzaSyD_5sDTYNRPimUENSnJVL5Uyq38NWQI_gA")
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Load .env file
+api_key = os.getenv("GEMINI_API_KEY")
+
+genai.configure(api_key=api_key)
 
 # Initialize the Gemini model
 gemini_model = genai.GenerativeModel('gemini-2.5-flash')
